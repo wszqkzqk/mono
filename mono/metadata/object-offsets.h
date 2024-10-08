@@ -233,6 +233,24 @@ DECL_OFFSET(DynCallArgs, fpregs)
 DECL_OFFSET(DynCallArgs, n_stackargs)
 DECL_OFFSET(DynCallArgs, n_fpargs)
 DECL_OFFSET(DynCallArgs, n_fpret)
+#elif defined(TARGET_S390X)
+DECL_OFFSET(MonoLMF, pregs)
+DECL_OFFSET(MonoLMF, lmf_addr)
+DECL_OFFSET(MonoLMF, method)
+DECL_OFFSET(MonoLMF, ebp)
+DECL_OFFSET(MonoLMF, eip)
+DECL_OFFSET(MonoLMF, gregs)
+DECL_OFFSET(MonoLMF, fregs)
+#elif defined(TARGET_RISCV)
+DECL_OFFSET(MonoContext, gregs)
+DECL_OFFSET(MonoContext, fregs)
+#elif defined(TARGET_LOONGARCH64)
+DECL_OFFSET(MonoLMF, pc)
+DECL_OFFSET(MonoLMF, gregs)
+DECL_OFFSET(MonoLMF, lmf_addr)
+DECL_OFFSET (MonoContext, pc)
+DECL_OFFSET (MonoContext, regs)
+DECL_OFFSET (MonoContext, fregs)
 #endif
 
 // Shared architecture offfsets
@@ -269,11 +287,11 @@ DECL_OFFSET(GSharedVtCallInfo, ret_marshal)
 DECL_OFFSET(GSharedVtCallInfo, vret_slot)
 #endif
 
-#if defined(TARGET_AMD64) || defined(TARGET_ARM64)
+#if defined(TARGET_AMD64) || defined(TARGET_ARM64) || defined(TARGET_LOONGARCH64)
 DECL_OFFSET(SeqPointInfo, ss_tramp_addr)
 #endif
 
-#if defined(TARGET_AMD64) || defined(TARGET_ARM) || defined(TARGET_ARM64)
+#if defined(TARGET_AMD64) || defined(TARGET_ARM) || defined(TARGET_ARM64) || defined(TARGET_LOONGARCH64)
 DECL_OFFSET(SeqPointInfo, bp_addrs)
 
 DECL_OFFSET(CallContext, gregs)
